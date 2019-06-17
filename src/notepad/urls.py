@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 from rest_framework import routers
+from rest_framework_swagger.views import get_swagger_view
 
 from notepad.event.views import EventViewSet
 from notepad.note.views import NoteViewSet
@@ -27,10 +29,12 @@ router.register(r'purchaseitem', PurchaseItemViewSet, base_name='purchase-item')
 router.register(r'event', EventViewSet, base_name='event')
 router.register(r'note', NoteViewSet, base_name='note')
 
+schema_view = get_swagger_view(title='Notepad API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
+    url(r'^documentation$', schema_view)
 ]
 
