@@ -146,10 +146,19 @@ REST_FRAMEWORK = {
         'notepad.renderers.CoreJSONRenderer',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.DjangoModelPermissions',
+        'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
+        'notepad.custom_auth.CustomAuthentication',
     ),
 }
+
+CHECK_TOKEN_URL_BASE = 'https://api.oneclick.ru:1443/api/user/checktoken'
+
+
+REQUEST_TIME_OUT = 30
+
+
+ADMIN_LOGIN = 'notepad_admin_frontend'

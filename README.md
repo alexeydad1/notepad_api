@@ -1,7 +1,8 @@
 # notepad
 Backend модуля Блокнот
 
-####install
+## install
+
 ```
 $ python3.6 -m venv var/venv 
 $ . var/venv/bin/activate

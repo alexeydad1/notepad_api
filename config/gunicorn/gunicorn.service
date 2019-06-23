@@ -1,0 +1,12 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=npad
+Group=nginx
+WorkingDirectory=/var/www/notepad/src
+ExecStart=/var/www/notepad/var/vevn/bin/gunicorn --access-logfile log/access.log --error-logfile log/error.log --workers 2 --bind unix:/var/www/notepad/var/gunicorn/link.sock notepad.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

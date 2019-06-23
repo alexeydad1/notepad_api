@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from rest_framework import routers
+from rest_framework import routers, serializers
 from rest_framework_swagger.views import get_swagger_view
 
 from notepad.event.views import EventViewSet
 from notepad.note.views import NoteViewSet
 from notepad.purchase.views import PurchaseViewSet, PurchaseItemViewSet
+
 
 router = routers.DefaultRouter()
 router.register(r'purchase', PurchaseViewSet, base_name='purchase')
